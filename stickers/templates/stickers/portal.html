@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Support Portal</title>
+  </head>
+  <body>
+    <h1>Sticker Support Portal</h1>
+
+    <form method="post">
+      {% csrf_token %}
+      <label>Enter Shopper ID:</label>
+      <input type="text" name="shopper_id" required />
+      <button type="submit">Search</button>
+    </form>
+
+    {% if error %}
+    <p style="color: red">{{ error }}</p>
+    {% endif %} {% if shopper_data %}
+    <h2>Shopper: {{ shopper_data.id }}</h2>
+    <p><strong>Current Balance:</strong> {{ shopper_data.balance }}</p>
+
+    <h3>Transaction History</h3>
+    <ul>
+      {% for tx in shopper_data.transactions %}
+      <li>
+        {{ tx.id }} | {{ tx.timestamp }} | Stickers: {{ tx.stickers_awarded }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>

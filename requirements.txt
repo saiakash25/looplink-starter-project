@@ -1,0 +1,16 @@
+Django
+django-bulk-update
+django-components
+django-environ
+django-htmx
+django-redis-sessions
+django-redis
+djangorestframework
+Jinja2
+psycopg[binary]
+redis
+requests
+invoke
+termcolor
+gunicorn
+ipython
